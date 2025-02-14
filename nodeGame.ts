@@ -17,6 +17,7 @@ class Field {
   print() {
     for (const row of this.field) {
       process.stdout.write(row.join(""))
+      process.stdout.write("\n")
     }
   }
   checkField(position: { first: number, second: number }) {
@@ -120,6 +121,7 @@ let result = false
 do {
   field.print();
 
+  // TODO: handle case where undefined is response
   const input = prompt("Where would you like to move?") as string;
   result = field.checkLegalMove(input)
 

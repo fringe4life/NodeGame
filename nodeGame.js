@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var prompt_sync_plus_1 = require("prompt-sync-plus");
-var config = {};
 var prompt = (0, prompt_sync_plus_1.default)(undefined);
 var fieldElements = ["^", "O", "░", "*"];
 var Field = /** @class */ (function () {
@@ -16,6 +15,7 @@ var Field = /** @class */ (function () {
         for (var _i = 0, _a = this.field; _i < _a.length; _i++) {
             var row = _a[_i];
             process.stdout.write(row.join(""));
+            process.stdout.write("\n");
         }
     };
     Field.prototype.checkField = function (position) {
@@ -23,11 +23,10 @@ var Field = /** @class */ (function () {
         return fieldElements.map(function (field) { return _this.field[position.first][position.second] === field; });
     };
     Field.prototype.getNewPosition = function (first, second) {
-        var newPosition = {
+        return {
             first: first,
             second: second
         };
-        return newPosition;
     };
     Field.prototype.isNewPositionInBoard = function (position) {
         return this.field.length > position.first && position.first >= 0 && this.field[0].length > position.second && position.second >= 0;
@@ -116,6 +115,7 @@ var field = new Field(fieldArray);
 var result = false;
 do {
     field.print();
+    // TODO: handle case where undefined is response
     var input = prompt("Where would you like to move?");
     result = field.checkLegalMove(input);
     field.moveCharacter();
