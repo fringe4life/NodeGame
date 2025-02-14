@@ -1,10 +1,5 @@
 const prompt = require('prompt-sync')({sigint: true});
 
-const hat = '^';
-const hole = 'O';
-const fieldCharacter = '░';
-const pathCharacter = '*';
-
 const fieldElemenets = "^O░*".split("")
 
 class Field {
@@ -85,15 +80,15 @@ class Field {
     return false
   }
   moveCharacter(){
-    this.field[this.currentPosition.first][this.currentPosition.second] = pathCharacter
+    this.field[this.currentPosition.first][this.currentPosition.second] = fieldElemenets[3]
   }
   static generateRandomFieldItem(percentage = 0.1){
     
     const randomNumber = Math.random()
     if( randomNumber >= 0 && randomNumber < percentage){
-      return hole;
+      return fieldElemenets[1];
     } 
-    return fieldCharacter
+    return fieldElemenets[2]
     
   }
   static placeHatOnField(fieldArray, height, width ){
@@ -104,7 +99,7 @@ class Field {
       w = Math.floor(Math.random() * width)
     } while ( !h || !w)
 
-    fieldArray[h][w] = hat
+    fieldArray[h][w] = fieldElemenets[0]
   }
   static generateField(height, width, percentage){
     const actualPercentage = percentage / 100
@@ -117,16 +112,10 @@ class Field {
       fieldArray.push(newArray)
     }
     Field.placeHatOnField(fieldArray, height, width)
-    fieldArray[0][0] = pathCharacter
+    fieldArray[0][0] = fieldElemenets[3]
     return fieldArray;
   }
 }
-
-const array2d = [
-  [pathCharacter, fieldCharacter, fieldCharacter],
-  [hole, hole, fieldCharacter],
-  [fieldCharacter, hole, hat]
-];
 
 const fieldArray = Field.generateField(4, 5, 33)
 
