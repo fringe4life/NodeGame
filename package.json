@@ -1,7 +1,7 @@
 {
-  "name": "NodeGame",
+  "name": "nodegame",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a terminal game where you enter u (up), l (left), r (right), d (down) and try to reach the hat and avoid the holes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "prompt-sync": "^4.2.0"
+    "prompt-sync-plus": "^1.0.2"
   },
   "devDependencies": {
-    "@types/prompt-sync": "^4.2.3"
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
   }
 }
