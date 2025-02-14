@@ -114,9 +114,10 @@ var fieldArray = Field.generateField(4, 5, 33);
 var field = new Field(fieldArray);
 var result = false;
 do {
+    console.log('\x1b[2J');
     field.print();
     // TODO: handle case where undefined is response
-    var input = prompt("Where would you like to move?");
+    var input = prompt("Where would you like to move (l, r, u or d?");
     result = field.checkLegalMove(input);
     field.moveCharacter();
 } while (!result);

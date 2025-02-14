@@ -124,10 +124,11 @@ const fieldArray: Elements[][] = Field.generateField(4, 5, 33)
 const field = new Field(fieldArray)
 let result = false
 do {
+  console.log('\x1b[2J');
   field.print();
 
   // TODO: handle case where undefined is response
-  const input = prompt("Where would you like to move?") as string;
+  const input = prompt("Where would you like to move (l, r, u or d?") as string;
   result = field.checkLegalMove(input)
 
   field.moveCharacter()
