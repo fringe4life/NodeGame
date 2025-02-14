@@ -4,9 +4,14 @@ const prompt = psp(undefined);
 const fieldElements = ["^", "O", "░", "*"] as const
 
 type Elements = "^" | "O" | "░" | "*"
+
+type Position = {
+  first: number,
+  second: number
+}
 class Field {
   field: Elements[][];
-  currentPosition: { first: number, second: number };
+  currentPosition: Position
   constructor(array2d: Elements[][]) {
     this.field = array2d;
     this.currentPosition = {
@@ -29,12 +34,12 @@ class Field {
       second: second
     }
   }
-  isNewPositionInBoard(position: { first: number, second: number }) {
+  isNewPositionInBoard(position: Position) {
     return this.field.length > position.first && position.first >= 0 && this.field[0].length > position.second && position.second >= 0
   }
   checkLegalMove(input: string) {
     const { first, second } = this.currentPosition
-    let position: { first: number, second: number };
+    let position: Position
     switch (input) {
       case 'd':
         position = this.getNewPosition(first + 1, second)
